@@ -1,0 +1,85 @@
+openapi: '3.0.2'
+info:
+  title: Customer API
+  version: '1.0'
+  contact:
+    name: Accenture
+    email: abc@example.com
+servers:
+  - url: https://api.server.test/v1
+tags:
+  - name: Customer API Name
+    description: Sample description
+
+paths:
+  /test:
+    post:
+      description: Create Customer
+      summary: Provides sample request
+      tags:
+        - Customer Fetch API
+      operationId: createCustomer
+      requestBody:
+          description: Create Customer Schema
+          content:
+            application/json:
+              schema:
+                #type: string
+                $ref:  "#/components/schemas/Customer"
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                #type: string
+                $ref:  "#/components/schemas/Customer"
+        '500':
+          description: Server Unavailable
+  /customer/{id}:
+    get:
+      operationId: getCustomerId
+      description: Gets Customer Details
+      parameters:
+        - name: id
+          in: path
+          description: Fetch Customer
+          required: true
+          schema:
+            type: string
+      tags:
+        -  "Customer API"
+      responses:
+        '200':
+            description: 'OK'
+            content:
+              application/json:
+               schema:
+                 $ref:  "#/components/schemas/Customer"
+        '400':
+             description: 'Bad Request'
+        '404' :
+             description: 'Not Found'
+
+components:
+  schemas:
+    Customer:
+      description: This is a Customer Schema
+      type: object
+      readOnly: false
+      required:
+        - "customerId"
+        - "customerName"
+      properties:
+        customerId:
+          type: string
+          description: Id of the Customer
+          example: 123
+          minLength: 1
+          maxLength: 12
+        customerName:
+          type: string
+          description: Id of the Customer
+          example: "Dummy"
+          minLength: 10
+          maxLength: 25
