@@ -1,4 +1,4 @@
-package com.acc.repository;
+package com.acc.training.customerapi.repository;
 
 import java.util.HashMap;
 import java.util.Map;

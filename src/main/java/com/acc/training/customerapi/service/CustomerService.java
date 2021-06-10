@@ -1,9 +1,9 @@
-package service;
+package com.acc.training.customerapi.service;
 
 import javax.validation.Valid;
 
-import com.acc.repository.CustomerRepository;
 import com.acc.training.customerapi.model.Customer;
+import com.acc.training.customerapi.repository.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
