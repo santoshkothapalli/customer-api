@@ -15,11 +15,11 @@ public class CustomerService {
     private CustomerRepository repository;
 
     public Customer createCustomer(@Valid Customer body) {
-        return null;
+        return repository.saveCustomerDetails(body);
     }
 
     public Customer getCustomer(String id) {
-        return null;
+        return repository.getCustomerDetails(id);
     }
     
 }

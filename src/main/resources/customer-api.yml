@@ -6,46 +6,44 @@ info:
     name: Accenture
     email: contact@example.com
     url: http://example.com
-#click on preview    
+    
 servers:
   - url: https://api.server.test/v1
 
 tags:
-  - name: CUSTOMER API
+  - name: Customer API
     description: Create and Fetch Customer
+
 
 paths:
   /customer:
     post:
-      description: Create Customer
-      summary: Create Customer for given request
+      description: Create Customer 
+      summary: Create customer for given request
       tags:
         - "Customer API"
       operationId: createCustomer
       requestBody:
-        description: Request body for customer creation
-        content: 
+        description: create customer schema 
+        content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Customer'
-
+              $ref: '#/components/schemas/Customer'     
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                #type: string
-                $ref: '#/components/schemas/Customer'
-
+                $ref: '#/components/schemas/Customer' 
         '500':
-          description: Internal Server Error
-  /customer/{id}:
+          description: Internal Server Error 
+  /customer/{id}:        
     get:
       operationId: getCustomer
       description: Fetch customer details
       parameters:
-        - name: Id
+        - name: id
           in: path
           description: fetch customer
           required: true
@@ -54,18 +52,19 @@ paths:
       tags:
         - "Customer API"
       responses:
-          '200':
+        '200':
             description: OK
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/Customer'
-          '500':
+                  $ref: '#/components/schemas/Customer' 
+        '500':
             description: Internal Server Error
-          '400':
+        '400':
             description: Bad Request
-          '404':
-            description: Not Found
+        '404':
+            description: Not Found            
+
 
 components:
   schemas:
@@ -73,23 +72,24 @@ components:
       description: This is a customer schema
       type: object
       required:
-        - "customerId"
+        - "customerId" 
       properties:
-        customerId: 
+        customerId:
           type: string
           description: Id of the customer
           example: 12345
           minLength: 5
           maxLength: 8
-        customerName: 
+        customerName:
           type: string
           description: Name of the customer (firstname/lastname)
-          example: Dheepika Kannan
+          example: Rahul Anand
         customerAddress:
           type: string
           description: Address of the customer
-          example: Pittsburgh, PA
+          example: Hartford, CT 
         officeCode:
           type: integer
           description: customer's office code
-          example: 259
+          example: 714  
+          
