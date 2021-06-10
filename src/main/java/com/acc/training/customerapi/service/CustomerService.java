@@ -16,10 +16,18 @@ public class CustomerService {
 
     public Customer createCustomer(@Valid Customer body) {
         return repository.saveCustomerDetails(body);
+<<<<<<< Updated upstream
     }
 
     public Customer getCustomer(String id) {
         return repository.getCustomerDetails(id);
     }
+=======
+        }
+        
+        public Customer getCustomer(String id) {
+        return repository.getCustomerDetails(id);
+        }
+>>>>>>> Stashed changes
     
 }
