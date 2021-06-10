@@ -28,8 +28,13 @@ public class CustomerController implements CustomerApi {
     @Override
     public ResponseEntity<Customer> getCustomer(String id) {
 
-        // TODO validate string id
-        Customer response = service.getCustomer(id);
+        Customer response = new Customer();
+        
+        if (id.length() >= 5 && id.length() <= 8) {
+            response = service.getCustomer(id);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
 
         if (response == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
