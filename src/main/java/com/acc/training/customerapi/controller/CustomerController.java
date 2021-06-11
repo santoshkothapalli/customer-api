@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import com.acc.training.customerapi.api.CustomerApi;
 import com.acc.training.customerapi.model.Customer;
 import com.acc.training.customerapi.service.CustomerService;
+import com.acc.training.customerapi.service.CustomerService1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CustomerController implements CustomerApi {
     @Autowired
-    private CustomerService service;
+    private CustomerService1 service;
 
     @Override
     public ResponseEntity<Customer> createCustomer(@Valid Customer body) {
