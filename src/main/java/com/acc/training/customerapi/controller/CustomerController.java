@@ -18,17 +18,20 @@ public class CustomerController implements CustomerApi {
 
     @Override
     public ResponseEntity<Customer> createCustomer(@Valid Customer body) {
-        // TODO Auto-generated method stub
+        
         Customer response = service.createCustomer(body);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @Override
     public ResponseEntity<Customer> getCustomer(String id) {
-        // TODO Auto-generated method stub
-
+        
         // Validate customerID min length 5 and max length 8 - 400 
         Customer response = service.getCustomer(id);
+        if((id.length()<5)||(id.length()>8)){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+         
         if(response == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
