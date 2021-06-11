@@ -28,7 +28,7 @@ public class CustomerController implements CustomerApi{
     @Override
     public ResponseEntity<Customer> getCustomer(String id) {
         // TODO Auto-generated method stub
-        if(id.length() >= 5 && id.length()<= 8)
+        if(!(id.length() >= 5 && id.length()<= 8))
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); 
         Customer response = service.getCustomer(id); 
         return (response == null) ? ResponseEntity.status(HttpStatus.NOT_FOUND).build() : ResponseEntity.status(HttpStatus.OK).body(response);
