@@ -10,9 +10,11 @@ import com.acc.training.customerapi.service.CustomerService1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("${my.path}")
 public class CustomerController implements CustomerApi {
     @Autowired
     private CustomerService1 service;
