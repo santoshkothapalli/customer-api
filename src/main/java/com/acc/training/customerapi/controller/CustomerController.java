@@ -9,9 +9,11 @@ import com.acc.training.customerapi.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("${my.path}")
 public class CustomerController implements CustomerApi {
 
   @Autowired
@@ -27,18 +29,18 @@ public class CustomerController implements CustomerApi {
 
   @Override
   public ResponseEntity<Customer> getCustomer(String id) {
-  
+
     Customer response = service.getCustomer(id);
-    
+
     if (id.length() >= 5 && id.length() <= 8) {
       response = service.getCustomer(id);
-  } else {
+    } else {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-  }
+    }
 
-  if (response == null) {
+    if (response == null) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-  }
+    }
 
     return ResponseEntity.status(HttpStatus.OK).body(response);
   }
