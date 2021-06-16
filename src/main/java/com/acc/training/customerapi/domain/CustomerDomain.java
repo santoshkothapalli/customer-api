@@ -4,7 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import org.springframework.data.annotation.Id;
 
-@Document(collection = "customers-training-rahul")
+@Document(collection = "customers-training-gk")
 public class CustomerDomain {
 
     @Id
