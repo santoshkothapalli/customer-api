@@ -83,11 +83,11 @@ components:
         customerName:
           type: string
           description: Name of the customer (firstname/lastname)
-          example: Rahul Anand
+          example: Gaurav K
         customerAddress:
           type: string
           description: Address of the customer
-          example: Hartford, CT 
+          example: United States 
         officeCode:
           type: integer
           description: customer's office code
