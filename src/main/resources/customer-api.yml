@@ -1,0 +1,91 @@
+openapi: '3.0.2'
+info:
+  title: Customer API
+  version: '1.0'
+  contact:
+    name: Accenture
+    email: contact@example.com
+    url: http://example.com  
+servers:
+  - url: https://api.server.test/v1
+tags:
+  - name: Customer API
+    description: Create and Fetch Customer
+paths:
+  /customer:
+    post:
+      description: Create Customer
+      summary: Create Customer for given request
+      tags:
+      - "Customer API"
+      operationId: createCustomer
+      requestBody:
+        description: Create Customer Schema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '500':
+          description: Internal Server Error
+
+  /customer/{id}:
+    get:
+      description: Fetch customer details by customer id
+      summary: Get Customer details by customer id
+      operationId: getCustomer
+      parameters:
+        - name: Id
+          in: path
+          description: fetch customer
+          required: true
+          schema:
+            type: string
+      tags:
+        - "Customer API"
+      responses:
+          '200': 
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Customer'
+          '500':
+            description: Internal Server Error
+          '400':
+            description: Bad request
+          '404':
+            description: Not Found
+
+components:
+  schemas:
+    Customer:
+      description: Customer Schema
+      type: object
+      required:
+        - "customerId"
+      properties:
+        customerId:
+          type: string
+          description: Id of the customer
+          example: 12345
+          minLength: 5
+          maxLength: 8
+        customerName:
+          type: string
+          description: Customer Name
+          example: Santosh Kothapalli
+        customerAddress:
+          type: string
+          description: Home address of customer
+          example: Charlotte, NC
+        officeCode:
+          type: integer
+          description: Customer's office officeCode
+          example: 28104
