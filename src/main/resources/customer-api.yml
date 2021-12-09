@@ -41,7 +41,7 @@ paths:
       summary: Get Customer details by customer id
       operationId: getCustomer
       parameters:
-        - name: Id
+        - name: id
           in: path
           description: fetch customer
           required: true
